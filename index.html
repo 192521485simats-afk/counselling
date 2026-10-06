@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Counselling System</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f2f6fc;
+    color: #222;
+}
+
+header {
+    background: #1565c0;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 8px 0 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #1565c0;
+    margin-top: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.full {
+    grid-column: span 2;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+button {
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0d47a1;
+}
+
+.result {
+    display: none;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.info-table th,
+.info-table td {
+    border: 1px solid #ddd;
+    padding: 13px;
+    text-align: left;
+}
+
+.info-table th {
+    background: #1565c0;
+    color: white;
+    width: 35%;
+}
+
+.summary {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e3f2fd;
+    border-radius: 8px;
+    border-left: 5px solid #1565c0;
+}
+
+.recommendation {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    border-left: 5px solid #2e7d32;
+}
+
+.recommendation h2 {
+    color: #2e7d32;
+}
+
+footer {
+    background: #1565c0;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+@media(max-width:700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: span 1;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🎓 Student Counselling System</h1>
+
+<p>Cloud-Based SaaS Web Application</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<!-- STUDENT DETAILS -->
+
+<div class="card">
+
+<h2>👨‍🎓 Student Information</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Student Name</label>
+
+<input
+type="text"
+id="studentName"
+placeholder="Enter student name">
+
+</div>
+
+
+<div>
+
+<label>Age</label>
+
+<input
+type="number"
+id="age"
+min="1"
+max="100"
+placeholder="Enter age">
+
+</div>
+
+
+<div>
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="Enter phone number">
+
+</div>
+
+
+<div>
+
+<label>Year of Passing</label>
+
+<select id="passingYear">
+
+<option value="">Select Year</option>
+
+<option>2022</option>
+<option>2023</option>
+<option>2024</option>
+<option>2025</option>
+<option>2026</option>
+<option>2027</option>
+<option>2028</option>
+
+</select>
+
+</div>
+
+
+<div class="full">
+
+<label>Address</label>
+
+<textarea
+id="address"
+placeholder="Enter complete address"></textarea>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ACADEMIC DETAILS -->
+
+<div class="card">
+
+<h2>📚 Academic Information</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Subjects Studied</label>
+
+<input
+type="text"
+id="subjects"
+placeholder="Example: Mathematics, Physics, Computer Science">
+
+</div>
+
+
+<div>
+
+<label>Percentage of Marks</label>
+
+<input
+type="number"
+id="percentage"
+min="0"
+max="100"
+step="0.01"
+placeholder="Enter percentage">
+
+</div>
+
+
+<div>
+
+<label>Qualification</label>
+
+<select id="qualification">
+
+<option value="">Select Qualification</option>
+
+<option>10th Standard</option>
+
+<option>12th Standard</option>
+
+<option>Diploma</option>
+
+<option>Undergraduate</option>
+
+<option>Postgraduate</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Academic Performance</label>
+
+<select id="performance">
+
+<option>Excellent</option>
+
+<option>Very Good</option>
+
+<option>Good</option>
+
+<option>Average</option>
+
+<option>Needs Improvement</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- INTEREST DETAILS -->
+
+<div class="card">
+
+<h2>💡 Career & Domain Interest</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Domain Interest</label>
+
+<select id="domain">
+
+<option value="">Select Domain</option>
+
+<option>Software Development</option>
+
+<option>Artificial Intelligence</option>
+
+<option>Data Science</option>
+
+<option>Cyber Security</option>
+
+<option>Cloud Computing</option>
+
+<option>Web Development</option>
+
+<option>Networking</option>
+
+<option>Electronics</option>
+
+<option>Mechanical Engineering</option>
+
+<option>Business & Management</option>
+
+<option>Research</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Counselling Type</label>
+
+<select id="counsellingType">
+
+<option>Career Counselling</option>
+
+<option>Academic Counselling</option>
+
+<option>Higher Education Counselling</option>
+
+<option>Skill Development Counselling</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Preferred Career</label>
+
+<input
+type="text"
+id="career"
+placeholder="Example: Software Engineer">
+
+</div>
+
+
+<div>
+
+<label>Preferred Study Mode</label>
+
+<select id="studyMode">
+
+<option>Classroom</option>
+
+<option>Online</option>
+
+<option>Hybrid</option>
+
+</select>
+
+</div>
+
+
+<div class="full">
+
+<label>Student's Goals / Requirements</label>
+
+<textarea
+id="goals"
+placeholder="Enter student's career goals or counselling requirements"></textarea>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<button onclick="processCounselling()">
+
+🔍 Generate Counselling Report
+
+</button>
+
+
+</div>
+
+
+
+<!-- COUNSELLING REPORT -->
+
+<div class="card result" id="result">
+
+
+<h2>📄 Student Counselling Report</h2>
+
+
+<table class="info-table">
+
+
+<tr>
+
+<th>Student Name</th>
+
+<td id="resultName"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Age</th>
+
+<td id="resultAge"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Phone</th>
+
+<td id="resultPhone"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Address</th>
+
+<td id="resultAddress"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Subjects Studied</th>
+
+<td id="resultSubjects"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Year of Passing</th>
+
+<td id="resultYear"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Qualification</th>
+
+<td id="resultQualification"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Percentage of Marks</th>
+
+<td id="resultPercentage"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Domain Interest</th>
+
+<td id="resultDomain"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Counselling Type</th>
+
+<td id="resultCounselling"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Preferred Career</th>
+
+<td id="resultCareer"></td>
+
+</tr>
+
+
+<tr>
+
+<th>Study Mode</th>
+
+<td id="resultStudyMode"></td>
+
+</tr>
+
+
+</table>
+
+
+
+<!-- RECOMMENDATION -->
+
+<div class="recommendation">
+
+<h2>🎯 Career Recommendation</h2>
+
+<p id="recommendation"></p>
+
+</div>
+
+
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+<h2>📝 Counselling Summary</h2>
+
+<p id="summary"></p>
+
+<h3>Student Goals</h3>
+
+<p id="resultGoals"></p>
+
+</div>
+
+
+<br>
+
+
+<button onclick="window.print()">
+
+🖨 Print Counselling Report
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+Student Counselling System |
+SaaS Cloud Web Application |
+GitHub Pages
+
+</footer>
+
+
+
+<script>
+
+
+function processCounselling() {
+
+
+/* GET STUDENT DETAILS */
+
+
+let name =
+document.getElementById("studentName").value;
+
+let age =
+Number(document.getElementById("age").value);
+
+let phone =
+document.getElementById("phone").value;
+
+let address =
+document.getElementById("address").value;
+
+let year =
+document.getElementById("passingYear").value;
+
+
+/* ACADEMIC DETAILS */
+
+
+let subjects =
+document.getElementById("subjects").value;
+
+let percentage =
+Number(document.getElementById("percentage").value);
+
+let qualification =
+document.getElementById("qualification").value;
+
+let performance =
+document.getElementById("performance").value;
+
+
+/* CAREER DETAILS */
+
+
+let domain =
+document.getElementById("domain").value;
+
+let counsellingType =
+document.getElementById("counsellingType").value;
+
+let career =
+document.getElementById("career").value;
+
+let studyMode =
+document.getElementById("studyMode").value;
+
+let goals =
+document.getElementById("goals").value;
+
+
+/* VALIDATION */
+
+
+if(name === "") {
+
+    alert("Please enter Student Name.");
+
+    return;
+
+}
+
+
+if(age <= 0) {
+
+    alert("Please enter a valid Age.");
+
+    return;
+
+}
+
+
+if(phone === "") {
+
+    alert("Please enter Phone Number.");
+
+    return;
+
+}
+
+
+if(year === "") {
+
+    alert("Please select Year of Passing.");
+
+    return;
+
+}
+
+
+if(subjects === "") {
+
+    alert("Please enter Subjects Studied.");
+
+    return;
+
+}
+
+
+if(percentage < 0 || percentage > 100) {
+
+    alert("Percentage must be between 0 and 100.");
+
+    return;
+
+}
+
+
+if(domain === "") {
+
+    alert("Please select Domain Interest.");
+
+    return;
+
+}
+
+
+/* DISPLAY DETAILS */
+
+
+document.getElementById("resultName")
+.innerText = name;
+
+
+document.getElementById("resultAge")
+.innerText = age;
+
+
+document.getElementById("resultPhone")
+.innerText = phone;
+
+
+document.getElementById("resultAddress")
+.innerText =
+address || "Not provided";
+
+
+document.getElementById("resultSubjects")
+.innerText = subjects;
+
+
+document.getElementById("resultYear")
+.innerText = year;
+
+
+document.getElementById("resultQualification")
+.innerText =
+qualification || "Not specified";
+
+
+document.getElementById("resultPercentage")
+.innerText =
+percentage.toFixed(2) + "%";
+
+
+document.getElementById("resultDomain")
+.innerText = domain;
+
+
+document.getElementById("resultCounselling")
+.innerText =
+counsellingType;
+
+
+document.getElementById("resultCareer")
+.innerText =
+career || "Not specified";
+
+
+document.getElementById("resultStudyMode")
+.innerText =
+studyMode;
+
+
+document.getElementById("resultGoals")
+.innerText =
+goals || "No specific goals provided.";
+
+
+/* CAREER RECOMMENDATION */
+
+
+let recommendation = "";
+
+
+if(domain === "Software Development") {
+
+    recommendation =
+    "The student can explore programming, software engineering, web development and application development. Recommended skills include Python, Java, JavaScript, databases and problem solving.";
+
+}
+
+else if(domain === "Artificial Intelligence") {
+
+    recommendation =
+    "The student can explore Artificial Intelligence and Machine Learning. Recommended areas include Python, mathematics, machine learning, deep learning and data analysis.";
+
+}
+
+else if(domain === "Data Science") {
+
+    recommendation =
+    "The student can explore Data Science and Analytics. Recommended skills include Python, statistics, SQL, data visualization and machine learning.";
+
+}
+
+else if(domain === "Cyber Security") {
+
+    recommendation =
+    "The student can explore Cyber Security. Recommended areas include networking, ethical security practices, Linux, cryptography and security tools.";
+
+}
+
+else if(domain === "Cloud Computing") {
+
+    recommendation =
+    "The student can explore Cloud Computing. Recommended skills include cloud platforms, virtualization, networking, containers and cloud security.";
+
+}
+
+else if(domain === "Web Development") {
+
+    recommendation =
+    "The student can explore Front-End and Back-End Web Development. Recommended skills include HTML, CSS, JavaScript, databases and web frameworks.";
+
+}
+
+else if(domain === "Networking") {
+
+    recommendation =
+    "The student can explore Computer Networking and Network Administration. Recommended areas include TCP/IP, routing, switching, network security and cloud networking.";
+
+}
+
+else if(domain === "Electronics") {
+
+    recommendation =
+    "The student can explore Electronics, Embedded Systems and IoT. Recommended areas include microcontrollers, sensors, digital electronics and programming.";
+
+}
+
+else if(domain === "Mechanical Engineering") {
+
+    recommendation =
+    "The student can explore Mechanical Design, Manufacturing, Automation and CAD-based careers.";
+
+}
+
+else if(domain === "Business & Management") {
+
+    recommendation =
+    "The student can explore Business Management, Marketing, Finance, Human Resources and Entrepreneurship.";
+
+}
+
+else if(domain === "Research") {
+
+    recommendation =
+    "The student can consider higher education and research-oriented careers. Developing analytical, technical and research skills is recommended.";
+
+}
+
+
+/* ADD PERFORMANCE ADVICE */
+
+
+if(percentage >= 85) {
+
+    recommendation +=
+    " The student's academic performance is strong. Higher-level specialization and advanced certifications can be considered.";
+
+}
+
+else if(percentage >= 70) {
+
+    recommendation +=
+    " The student has a good academic foundation. Additional practical projects and skill development are recommended.";
+
+}
+
+else {
+
+    recommendation +=
+    " The student should focus on strengthening academic fundamentals and practical skills before selecting advanced specialization.";
+
+}
+
+
+document.getElementById("recommendation")
+.innerText =
+recommendation;
+
+
+/* COUNSELLING SUMMARY */
+
+
+let summary =
+name +
+" is interested in " +
+domain +
+". The student has scored " +
+percentage.toFixed(2) +
+"% and is seeking " +
+counsellingType.toLowerCase() +
+". Based on the selected interests and academic performance, suitable career and skill-development pathways have been suggested.";
+
+
+document.getElementById("summary")
+.innerText =
+summary;
+
+
+/* SHOW RESULT */
+
+
+document.getElementById("result")
+.style.display = "block";
+
+
+/* SCROLL TO REPORT */
+
+
+window.scrollTo({
+
+    top:
+    document.getElementById("result").offsetTop,
+
+    behavior: "smooth"
+
+});
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>
